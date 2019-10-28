@@ -6,13 +6,14 @@ import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import maxville.testrequestapplication.data.common.BaseViewModel
+import maxville.testrequestapplication.data.common.SingleLiveEvent
 import java.net.URL
 
 class HomeViewModel : BaseViewModel() {
 
     var text = MutableLiveData<String>()
-    var toast = MutableLiveData<String>()
-    var progressShow = MutableLiveData<Boolean>()
+    var toast = SingleLiveEvent<String>()
+    var progressShow = SingleLiveEvent<Boolean>()
 
     fun executeRequest(address: String) {
         addDisposable(
